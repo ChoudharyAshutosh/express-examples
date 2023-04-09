@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=delive-width,initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <title>{{user.name}}</title>
+    </head>
+    <body>
+        <h1>{{user.name}} <a href="/user/{{user.id}}/edit">edit</a></h1>
+        {{#if messages}}
+            <ul>
+                {{#each message}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+        {{#if user.pets.length}}
+            <p>View {{user.name}}'s pets:</p>
+            <ul>
+                {{#each user.pets}}
+                    <li href="/pet/{{id}}"><a>{{name}}</a></li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <p>No pets!</p>
+        {{/if}}
+    </body>
+</html>
