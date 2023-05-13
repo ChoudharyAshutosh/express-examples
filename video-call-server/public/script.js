@@ -119,7 +119,15 @@ send.addEventListener('click', (e)=>{
 
 text.addEventListener('keydown', (e)=>{
     if(e.key == 'Enter' && text.value.length!=0){
-        socket.emit('message', text.value);
+        let msgArr = text.value.split(':');
+        console.log(msgArr)
+        if(msgArr.length>1){
+            console.log(msgArr)
+            socket.emit('join-room', msgArr[1], userId, user);
+        }
+        else{
+            socket.emit('message', text.value);
+        }
         text.value = '';
     }
 });
